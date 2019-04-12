@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'crispy_forms',
-    'tv_spoiler',
+    'spoiler.tv_spoiler',
 ]
 
 MIDDLEWARE = [
@@ -122,3 +122,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
+# africastalking
+AFRICASTALKING_USERNAME = os.getenv('AFRICASTALKING_USERNAME', 'sandbox')
+AFRICASTALKING_API_KEY = os.getenv('AFRICASTALKING_API_KEY', 'fake')
