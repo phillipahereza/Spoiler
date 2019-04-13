@@ -38,13 +38,22 @@
   {% endblock content %}
   <footer style="left: 0; bottom: 0; width: 100%; overflow: hidden;">
     <div class="container">
-      <div class="float-left">
-        <p>Inspired by <a href="https://spoiled.io" target="_blank">Spoiled.io</a></p>
+      <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12">
+          <p>Can't handle it? Feel free to <a href="/opt-out">opt-out</a></p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12" style="text-align: right">
+          <p>Inspired by
+            <a href="https://spoiled.io" target="_blank">Spoiled.io</a></p>
+        </div>
       </div>
-    <div class="float-right">
-      <p>Can't handle it? Feel free to <a href="/opt-out">opt-out</a></p>
-    </div>
-      <small>spilfor.me associated, or endorsed by HBO or Game of Thrones</small>
+
+      <div class="clearfix" style="text-align: center">
+        <small>spilfor.me is not associated, or endorsed by HBO or Game of
+          Thrones
+        </small>
+      </div>
+
     </div>
   </footer>
 
@@ -58,11 +67,15 @@
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138212842-1"></script>
 <script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+    window.dataLayer = window.dataLayer || [];
 
-  gtag('config', 'UA-138212842-1');
+    function gtag() {
+        dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'UA-138212842-1');
 </script>
 
 </body>
