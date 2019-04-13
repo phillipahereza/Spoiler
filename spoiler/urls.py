@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.urls import path
 
-from spoiler.tv_spoiler.views import HomeView, SpoilView
+from spoiler.tv_spoiler.views import HomeView, SpoilView, OptOutView
 
 urlpatterns = [
     path('', HomeView.as_view(), name='homepage'),
     path('spoil/', SpoilView.as_view(), name='spoil'),
+    path('opt-out/', OptOutView.as_view(), name='opt-out'),
 ]

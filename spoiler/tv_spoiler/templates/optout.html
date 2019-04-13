@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+    <div class="container mt-2 p-5" style="text-align: left">
+    <h3 class="mt-2" style="font-weight: 200">Are you sure you want to do this 🥺😓...... We'll I guess you can
+      <a href="/">torture someone</a> else to keep balance in the universe 🦹</h3>
+    <div class="p-5">
+      {% crispy form %}
+    </div>
+  </div>
+
+{% endblock content %}

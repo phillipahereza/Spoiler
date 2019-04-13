@@ -2,7 +2,9 @@ import africastalking
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.views.generic import FormView
-from .forms import VictimForm, SpoilForm
+
+from spoiler.tv_spoiler.models import Victim
+from .forms import VictimForm, SpoilForm, OptOutForm
 from .tasks import send_sms, send_welcome_message
 
 # Create your views here.
@@ -44,6 +46,27 @@ class SpoilView(FormView):
 
         if form.is_valid():
             send_sms.delay(form.cleaned_data['spoil_text'])
+            return self.form_valid(form)
+        else:
+            return self.form_invalid(form)
+
+
+class OptOutView(FormView):
+    template_name = 'optout.html'
+    form_class = OptOutForm
+    success_url = '/'
+
+    def post(self, request, *args, **kwargs):
+        form = self.get_form()
+
+        if form.is_valid():
+            tel_number = form.cleaned_data['telephone_number']
+            try:
+                victim = Victim.objects.get(telephone_number=tel_number)
+                victim.delete()
+                messages.success(request, 'Your telephone number has been deleted')
+            except Victim.DoesNotExist:
+                pass
             return self.form_valid(form)
         else:
             return self.form_invalid(form)

@@ -52,3 +52,20 @@ class SpoilForm(forms.Form):
             Field('spoil_text', css_class='form-control'),
 
             Submit('submit', 'Submit', css_class='btn btn-primary'),)
+
+
+class OptOutForm(forms.Form):
+    telephone_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': '+256782000000'}))
+
+    def __init__(self, *args, **kwargs):
+        super(OptOutForm, self).__init__(*args, **kwargs)
+        self.helper = FormHelper()
+        self.helper.form_class = 'form-horizontal'
+        self.helper.label_class = 'col-lg-2'
+        self.helper.field_class = 'col-lg-8'
+        self.helper.layout = Layout(
+            Field('telephone_number', css_class='form-control'),
+
+            Submit('submit', 'Opt Out', css_class='btn btn-primary'),)
+
+
