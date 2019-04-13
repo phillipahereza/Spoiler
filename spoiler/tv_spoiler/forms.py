@@ -12,7 +12,7 @@ class VictimForm(forms.ModelForm):
         fields = ['name', 'telephone_number']
         widgets = {
             'name': forms.fields.TextInput(attrs={
-                'placeholder': 'Name',
+                'placeholder': 'Nickname',
                 'class': 'form-control input-lg',
             }),
             'telephone_number': forms.fields.TextInput(attrs={
