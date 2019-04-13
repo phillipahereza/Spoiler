@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -75,11 +76,9 @@ WSGI_APPLICATION = 'spoiler.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
+DATABASE_URL = os.environ.get('DATABASE_URL', 'postgresql://spoiler:spoiler@localhost/spoiler')
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+    'default': dj_database_url.parse(DATABASE_URL),
 }
 
 
@@ -124,5 +123,8 @@ STATIC_URL = '/static/'
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 # africastalking
-AFRICASTALKING_USERNAME = os.getenv('AFRICASTALKING_USERNAME', 'sandbox')
-AFRICASTALKING_API_KEY = os.getenv('AFRICASTALKING_API_KEY', 'fake')
+AFRICASTALKING_USERNAME = os.getenv('AFRICASTALKING_USERNAME', 'ahereza')
+AFRICASTALKING_API_KEY = os.getenv('AFRICASTALKING_API_KEY', '153b2b735972a6b13d8d2e37494b31883ca209ce4a78a3438f412b3796c8ba21')
+
+# celery
+CELERY_BROKER_URL = 'redis://localhost'
