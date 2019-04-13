@@ -45,7 +45,9 @@ class SpoilView(FormView):
         form = self.get_form()
 
         if form.is_valid():
-            send_sms.delay(form.cleaned_data['spoil_text'])
+            spoiler_text = form.cleaned_data['spoil_text']
+            full_text = f"Hi, \n{spoiler_text}\nfrom your friends at http://spoilfor.me"
+            send_sms.delay(full_text)
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
