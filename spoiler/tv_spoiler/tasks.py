@@ -15,3 +15,14 @@ def send_sms(spoiler_text: str):
         sms.send(spoiler_text, contacts)
     except Exception as e:
         return e
+
+@shared_task
+def send_welcome_message(contact):
+    africastalking.initialize(settings.AFRICASTALKING_USERNAME,
+                              settings.AFRICASTALKING_API_KEY)
+    sms = africastalking.SMS
+    try:
+        sms.send('Excited about Game of Thrones 😉😉', [contact])
+    except Exception as e:
+        pass
+

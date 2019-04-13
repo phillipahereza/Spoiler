@@ -3,7 +3,7 @@ from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.views.generic import FormView
 from .forms import VictimForm, SpoilForm
-from .tasks import send_sms
+from .tasks import send_sms, send_welcome_message
 
 # Create your views here.
 
@@ -26,6 +26,7 @@ class HomeView(FormView):
         form = self.get_form()
         if form.is_valid():
             messages.success(request, 'Spoilers will automatically be sent to your victim after the next episode airs')
+            send_welcome_message.delay(form.cleaned_data['telephone_number'])
             return self.form_valid(form)
         else:
             messages.success(request,
