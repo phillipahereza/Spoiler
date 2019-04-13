@@ -22,7 +22,7 @@ def send_welcome_message(contact):
                               settings.AFRICASTALKING_API_KEY)
     sms = africastalking.SMS
     try:
-        sms.send('Excited about Game of Thrones 😉😉', [contact])
+        sms.send('Excited about Game of Thrones 😉😉 http://bit.ly/2Xa8Z3D', [contact])
     except Exception as e:
         pass
 
