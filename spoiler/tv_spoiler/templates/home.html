@@ -1,5 +1,16 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %}
 
 {% block content %}
+
+  <div class="container mt-2 p-5" style="text-align: left">
+    <h3 class="mt-2" style="font-weight: 200">As soon as the next Game of
+      Thrones episode airs, We will text shocking revelations to the number
+      you enter.</h3>
+    <div class="p-5">
+      {% crispy form %}
+    </div>
+  </div>
+
 
 {% endblock content %}
